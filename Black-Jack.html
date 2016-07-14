@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+		
+			function getRandomInt(min,max) {
+					return Math.floor(Math.random()*(max-min+1))+min;	
+				}
+
+
+
+			function getCard() {
+				var cards=["6","7","8","9","10","J","Q","K","A"]
+				return cards[getRandomInt(0,cards.length-1)];
+			}
+
+			function getSum(hand) {
+				var sum=0;
+
+					for (var i=0;i<hand.length;i++) 
+					{
+						var card=hand[i];
+						if (card != "A") {
+							if(card == "J"||card=="Q"||card=="K") {
+								sum = sum+10;
+							}else {
+								sum=sum + parseInt(card);
+							}
+						}
+					}
+					for (var i=0;i<hand.length;i++) {
+						var card=hand[i];
+						if (card == "A") {
+							if(sum>10) {
+								sum = sum+1;
+							}else {
+								sum=sum + 11;
+							}
+						}
+					}
+
+				return sum;
+			}
+
+			function getStatus() {
+				return "Дилер: "+dealer.join(" ")+" Игрок: "+player.join(" ")+".";
+			}
+
+			function Play() {
+
+				if (getSum(player)==21) {
+					alert("Дьявольское везение!Black Jack на раздаче!");
+				}else{
+
+				var answer="";
+				do{
+					answer=prompt(getCard()+" Хотите еще карту?Если да-нажмите Enter ,иначе нажмите 'Отмена'.")
+					if (answer=="") {
+						player.push(getCard());
+
+						sum=getSum(player);
+						if (sum>21) {
+							alert("Перебор. "+ getStatus());
+							break;
+						}else if (sum==21) {
+							alert("Black Jack!!! "+getStatus());
+							break;
+						}
+					}else{
+						while(getSum(dealer)<17){
+							dealer.push(getCard());
+						}
+						var sumDealer=getSum(dealer);
+						var sumPlayer=getSum(player);
+
+						if (sumDealer==21) {
+							alert("у дилера Black Jack! "+getStatus());
+						} else if (sumDealer>21) {
+							alert("У дилера перебор! "+getStatus());
+						} else if (sumDealer=sumPlayer) {
+							alert("Ничья! "+getStatus());
+						} else if (sumDealer<sumPlayer) {
+							alert("Выигрыш! "+getStatus());
+						} else  {
+							alert("Проигрыш! "+getStatus());
+						}
+					}
+				}while(answer=="");
+				}	
+			}
+
+			var dealer = [getCard()];
+			var player = [getCard(), getCard()];
+
+	</script>
+</head>
+<body>
+	<div id="header">
+		<a href="index.html">Главная</a><span>/</span>
+		<a href="puzzle.html">Загадки</a><span>/</span>
+		<a href="guess-2.html">Угадайка мультиплеер</a><span>/</span>
+		<a href="russian roulette.html">Русская рулетка</a><span>/</span>
+		<a href="bank.html">Калькулятор вкладов</a><span>/</span>
+		<a href="Black-Jack.html">Black-Jack</a>
+	</div>
+<div id="content">
+	<h1>Личный сайт студента GeekBrains</h1>
+    <div id="center">	
+		<h3>Black Jack</h3>
+			
+	    <div id="box">
+	    	<a href="#" onclick="Play();">Начать игру</a>
+	    	<p>Игра с компьютером(Дилером).</p>
+
+	    	<p>Цель игры в Black Jack заключается в том, чтобы набрать двадцать одно очко или же количество очков, максимально приближенное к этой сумме, но не больше ее. Если игрок набирает больше двадцати одного очка, он сразу же проигрывает. В остальных случаях ценность его карт сравнивается с ценностью карт дилера и определяется победитель. Карта достоинством в десять (10) очков (J,Q,K) и туз (A) в одиннадцать (11) очков, полученные с раздачи, называются блэкджеком. Это единственная комбинация карт в игре, имеющая название и она превосходит по силе любые другие карты.</p>
+
+            <br><br/>
+	    </div>
+</div>
+
+<div id="footer">
+	Copyright © 2016 <a href="https://geekbrains.ru/"> GeekBrains </a>
+</div>
+
+</body>
+</html>

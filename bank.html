@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script type="text/javascript">
+		function AskQuestion()
+		{
+			var a=parseInt(document.getElementById("contribution").value);
+			var b=parseInt(document.getElementById("percent").value);
+			var c=parseInt(document.getElementById("period").value);
+			for(year=1;year<=c;year++){
+				a=a+a*b/100;
+				alert("Сумма в клада на "+year+"-й год равна:"+Math.floor(a));
+			}
+		}
+		function RU() 
+		{
+			var m=document.getElementById("rub").value;
+			
+			var l = m * 0.01552
+	
+			var v = m * 0.01
+				
+			alert(l.toFixed(2) + " дол.");
+			alert(v.toFixed(2) + " евро");
+		}
+		
+		function USD() 
+		{
+			var m=document.getElementById("dol").value;
+			
+			var l = m * 64.27
+	
+			var v = m * 0.90
+				
+			alert(l.toFixed(2) + " руб.");
+			alert(v.toFixed(2) + " евро");
+		}
+		
+		function EUR() 
+		{
+			var m=document.getElementById("evr").value;
+			
+			var l = m * 71.63
+	
+			var v = m * 1.11
+				
+			alert(l.toFixed(2) + " руб.");
+			alert(v.toFixed(2) + " дол.");
+		}
+	</script>
+</head>
+<body>
+	<div id="header">
+		<a href="index.html">Главная</a><span>/</span>
+		<a href="puzzle.html">Загадки</a><span>/</span>
+		<a href="guess-2.html">Угадайка мультиплеер</a><span>/</span>
+		<a href="russian roulette.html">Русская рулетка</a><span>/</span>
+		<a href="bank.html">Калькулятор вкладов</a><span>/</span>
+		<a href="Black-Jack.html">Black-Jack</a>
+	</div>
+<div id="content">
+	<h1>Личный сайт студента GeekBrains</h1>
+    <div id="center">	
+		<h3>Банковская программа</h3>
+		<h5>Введите параметры вклада &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Валютный калькулятор.<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspВведите сумму в нужное поле:</h5>
+		<table border="0">			
+	    	<tr>
+		    	<td>
+		    		<div id="box">
+				    	<p>Сумма вклада(Руб./USD/EUR)</p>
+				    	<input type="text" id="contribution">
+			            <p>Процент по вкладу(%)</p>
+			            <input type="text" id="percent">
+			            <p>Срок вклада(в годах)</p>
+				    	<input type="text" id="period">
+			            <br><br/>
+			            <a href="#" onclick="AskQuestion();">Отправить</a>
+			        </div>
+	            </td>
+				
+				<td>
+			    	<div id="box" align="center">
+			    		<p>Введите сумму в Рублях</p>
+			    		<input type="text" id="rub">
+			    		<a href="#" onclick="RU();">Готово</a>
+			    		<p>Введите сумму в Долларах</p>
+			    		<input type="text" id="dol">
+			    		<a href="#" onclick="USD();">Готово</a>
+			    		<p>Введите сумму в Евро</p>
+			    		<input type="text" id="evr">
+			    		<a href="#" onclick="EUR();">Готово</a>
+			    	</div>
+		    	</td>
+	        </tr>
+	    	</div>
+	    </table>
+	</div>
+</div>
+
+<div id="footer">
+	Copyright © 2016 <a href="https://geekbrains.ru/"> GeekBrains </a>
+</div>
+
+</body>
+</html>
